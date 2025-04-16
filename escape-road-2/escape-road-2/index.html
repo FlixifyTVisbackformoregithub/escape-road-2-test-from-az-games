@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="25010602/theme/game.css">
+	<meta name="robots" content="noindex, nofollow">
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500&display=swap" rel="stylesheet">
+	<title>Escape Road 2</title>
+	<meta name="description" content=""/>
+	<style type="text/css">
+		.jss1:before {
+			top: 0;
+			width: 100%;
+			filter: blur(16px);
+			height: 100%;
+			content: "";
+			display: block;
+			opacity: .5;
+			z-index: 0;
+			position: absolute;
+			background-size: cover;
+			background-image: url("25010602/loading.png")
+		}
+	</style> 
+	 
+	<script>
+		var buildUrl = "Build";
+		var versionFolder = "25010602/";
+		buildUrl = versionFolder + buildUrl;
+		var loaderUrl = buildUrl + "/escape-road-2-v25010602.loader.js";
+		var config = {
+			dataUrl: buildUrl + "/escape-road-2-v25010602.data.unityweb",
+			frameworkUrl: buildUrl + "/escape-road-2-v25010602.framework.js.unityweb",
+			codeUrl: buildUrl + "/escape-road-2-v25010602.wasm.unityweb",
+			streamingAssetsUrl: versionFolder+"StreamingAssets",
+			companyName: "azgames.io",
+			productName: "Escape Road 2",
+			productVersion: "25010602",
+			pubId: ""
+		};
+		config.gameId = "escape-road-2";
+		config.eventLog=true;
+		config.buildAPI = "https://event.azgame.io/apiaz/event";
+	</script>
+	<script id="gmsoft-jssdk" src="https://games.azgame.io/lib/gmsoftsdk_v4.js"></script>
+</head>
+
+<body>
+<div id="unity-container" style="display: none;">
+	<canvas id="unity-canvas"></canvas> 
+</div>
+<div id="loadingBlock" style="">
+	<div class="jss31 jss34 jss1">
+	<div style="position: absolute; font-family: Arial, Helvetica, sans-serif;	bottom: 10px; right: 10px; font-size: 18px; color: #ffffff; opacity: 0.5;">25010602</div>
+		<div class="spinner"></div>
+		<div class="jss31 jss34 jss48" style="flex: 1 1 0%;">
+			<div class="jss32">
+				<div class="jss7 jss9 jss20 jss3">
+					<div class="jss125">
+						<div class="jss123">
+						 <img src="25010602/logo.png">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--PRODUCT_VERSION:25010602END-->
+		<div class="jss31 jss34" style="flex: 3 1 0%;">
+			<div class="jss32">
+				<div class="jss31 jss34 jss39 jss50 gameloader">
+					<div class="jss32">
+						<div class="gameloader-game-name">Escape Road 2</div>
+					</div>
+					<div class="jss32">
+						<div class="jss32 gameloader-logo">
+							<img id="game-logo" src="25010602/loading.png">
+						</div>
+					</div>
+					<div class="jss32">
+						<div>
+							<div class="gameloader-progressbar">
+								<div class="gameloader-progressbar-progress" id="progress_fill"
+										 style="width: 0%;"></div>
+							</div>
+							<div class="gameloader-progress-info">Game Loading...</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<script> 
+		var progressElement = document.getElementById('progress_fill');
+		var container =	document.getElementById("unity-container");
+		var canvas =	document.getElementById("unity-canvas");
+		var loadingBar = document.querySelector("#loadingBlock");
+		var progressBarFull = document.querySelector("#progress_fill");
+		var progress_text = document.querySelector(".gameloader-progress-info");
+		let text_percent = "";
+		var script = document.createElement("script");
+		script.src = loaderUrl;
+		script.onload = () => {
+		createUnityInstance(canvas, config, (progress) => {
+			progressElement.style.width = 100 * progress + "%";
+			text_percent = "Downloading file: " + Math.round(progress*100) + "%";
+			progress_text.innerText = text_percent;
+			if (progress >= 99) {
+				progress_text.innerText = "Game Loading ...";
+			}
+		}).then((unityInstance) => {
+			window.unityInstance = unityInstance;
+			setTimeout(function() {
+				loadingBar.style.display = "none";
+				window.focus();
+			}, 2000);
+			container.style.display = "block";
+		}).catch((message) => {
+			alert(message);
+		});
+		};
+		document.body.appendChild(script);
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics-compat.js"></script>
+	<script type="module">
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+		import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+		import { getAuth	} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+ apiKey: "AIzaSyDDb7OnEwOH2yFyzxqMGaxnMb7D6z0zAoE",
+ authDomain: "escape-road-2.firebaseapp.com",
+ projectId: "escape-road-2",
+ storageBucket: "escape-road-2.firebasestorage.app",
+ messagingSenderId: "106330943494",
+ appId: "1:106330943494:web:1a4c40bdd625509f761387",
+ measurementId: "G-WCKVNNMBMJ"
+};
+		window.dataLayer = window.dataLayer || [];
+		window.gtag = function () { window.dataLayer.push(arguments); }
+
+		window.gtag("config", firebaseConfig.measurementId, {
+		  cookie_domain: window.location.hostname,
+		  cookie_flags: "SameSite=None;Secure",
+		});
+		// Initialize Firebase
+		const app = firebase.initializeApp(firebaseConfig);
+		const auth = getAuth(app);
+	</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9313f9789c2ec57b","version":"2025.3.0","r":1,"token":"7aa564ef6af14bc2822f8b6f902775d5","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
+</body>	
+</html>
+
